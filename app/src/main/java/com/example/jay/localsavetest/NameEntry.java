@@ -39,7 +39,7 @@ public class NameEntry extends AppCompatActivity{
         SharedPreferences.Editor edit = userPrefs.edit();
         edit.putString("Username", n.getText().toString());
         edit.commit();
-        Intent i = new Intent(getApplicationContext(),StartingScreen.class);
+        Intent i = new Intent(getApplicationContext(),OpenScreen.class);
         startActivity(i);
     }
 }

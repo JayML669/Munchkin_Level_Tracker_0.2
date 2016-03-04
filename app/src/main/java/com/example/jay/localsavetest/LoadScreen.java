@@ -1,6 +1,7 @@
 package com.example.jay.localsavetest;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.view.View;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class StartingScreen extends AppCompatActivity {
+public class LoadScreen extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -88,7 +89,7 @@ public class StartingScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_starting_screen);
+        setContentView(R.layout.activity_load_screen);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -97,11 +98,17 @@ public class StartingScreen extends AppCompatActivity {
 
         // Set up the user interaction to manually show or hide the system UI.
 
-
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+                    public void run(){
+            Intent i = new Intent(getApplicationContext(), StartingScreen.class);
+            startActivity(i);
+        }
+        }, 5000);
     }
 
     @Override
@@ -128,7 +135,7 @@ public class StartingScreen extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-//        mControlsView.setVisibility(View.GONE);
+       // mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
