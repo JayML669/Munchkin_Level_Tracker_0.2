@@ -2,12 +2,14 @@ package com.example.jay.localsavetest;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.VideoView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -93,6 +95,11 @@ public class LoadScreen extends AppCompatActivity {
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
+        VideoView videoview = (VideoView) findViewById(R.id.videoView);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.vid3);
+        videoview.setVideoURI(uri);
+        videoview.start();
+
 
 
 
@@ -108,7 +115,7 @@ public class LoadScreen extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), StartingScreen.class);
             startActivity(i);
         }
-        }, 5000);
+        }, 6000);
     }
 
     @Override

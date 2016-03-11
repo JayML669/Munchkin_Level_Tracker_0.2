@@ -22,7 +22,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_player_screen"
             android:theme="@style/FullscreenTheme" />
-
         <activity
             android:name=".StartingScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -37,6 +36,11 @@
             android:name=".LoadGameScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_load_game_screen"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".Settings"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_settings"
             android:theme="@style/FullscreenTheme"></activity>
     </application>
 
