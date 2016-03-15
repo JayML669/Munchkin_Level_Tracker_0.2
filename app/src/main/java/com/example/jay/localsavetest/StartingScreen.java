@@ -1,12 +1,15 @@
 package com.example.jay.localsavetest;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -63,7 +66,7 @@ public class StartingScreen extends AppCompatActivity {
         }
     };
     private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
+   /* private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
             hide();
@@ -74,7 +77,7 @@ public class StartingScreen extends AppCompatActivity {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+    /*private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (AUTO_HIDE) {
@@ -82,7 +85,7 @@ public class StartingScreen extends AppCompatActivity {
             }
             return false;
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,12 @@ public class StartingScreen extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
 
 
+        ImageButton openSettings = (ImageButton) this.findViewById(R.id.imageButton2);
+        openSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Settings.class);
+                startActivity(i);
 
         // Set up the user interaction to manually show or hide the system UI.
 
@@ -104,7 +113,7 @@ public class StartingScreen extends AppCompatActivity {
 
     }
 
-    @Override
+   /* @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
@@ -112,7 +121,7 @@ public class StartingScreen extends AppCompatActivity {
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
-    }
+    }*/
 
     private void toggle() {
         if (mVisible) {
@@ -152,8 +161,8 @@ public class StartingScreen extends AppCompatActivity {
      * Schedules a call to hide() in [delay] milliseconds, canceling any
      * previously scheduled calls.
      */
-    private void delayedHide(int delayMillis) {
+    /*private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-}
+        mHideHandler.postDelayed(mHideRunnable, delayMillis);*/
+
+});};}
