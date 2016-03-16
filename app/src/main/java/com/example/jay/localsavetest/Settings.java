@@ -1,18 +1,30 @@
 package com.example.jay.localsavetest;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.larswerkman.lobsterpicker.LobsterPicker;
+import com.larswerkman.lobsterpicker.OnColorListener;
+import com.larswerkman.lobsterpicker.sliders.LobsterOpacitySlider;
+import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class Settings extends AppCompatActivity {
+
+    private String preferencesFileName = "com.example.jay.localsavetest.preferences";
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -68,6 +80,8 @@ public class Settings extends AppCompatActivity {
             hide();
         }
     };
+
+    }
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
@@ -91,6 +105,48 @@ public class Settings extends AppCompatActivity {
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
+        final LobsterPicker lobsterPicker = (LobsterPicker) findViewById(R.id.lobsterpicker);
+        LobsterShadeSlider shadeSlider = (LobsterShadeSlider) findViewById(R.id.shadeslider);
+        LobsterOpacitySlider opacitySlider = (LobsterOpacitySlider) findViewById(R.id.opacityslider);
+
+
+
+        ImageButton colorButton = (ImageButton)this.findViewById(R.id.imageButton);
+        colorButton.setOnClickListener(new View.onClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            };});
+//To connect them
+        lobsterPicker.addDecorator(shadeSlider);
+        lobsterPicker.addDecorator(opacitySlider);
+
+
+//To retrieve the selected color use
+        lobsterPicker.getColor();
+
+//You'r also able to add a listener
+        lobsterPicker.addOnColorListener(new OnColorListener() {
+            @Override
+            public void onColorChanged(@ColorInt int color) {
+
+
+            }
+
+            @Override
+            public void onColorSelected(@ColorInt int color) {
+
+                SharedPreferences backgroundColor=getApplicationContext().getSharedPreferences(preferencesFileName, Settings.MODE_PRIVATE);
+                SharedPreferences.Editor edit=backgroundColor.edit();
+                edit.putString("backgroundColor", Integer.toHexString(color));
+                edit.commit();
+
+
+
+
+            }
+        });
 
 
 
@@ -104,6 +160,10 @@ public class Settings extends AppCompatActivity {
         // while interacting with the UI.
 
     }
+@Override
+protected void onCreateView(){
+
+}
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

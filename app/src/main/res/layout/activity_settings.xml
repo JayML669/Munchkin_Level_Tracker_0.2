@@ -6,6 +6,8 @@
     tools:context="com.example.jay.localsavetest.Settings">
 
 
+
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +31,54 @@
                 android:src="@drawable/ic_color_lens_24dp"
                 android:id="@+id/imageButton"
                 android:layout_gravity="center" />
+
         </TableRow>
 
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center"
+        android:layout_gravity="center">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundGravity="center|center_horizontal">
+            <com.larswerkman.lobsterpicker.LobsterPicker
+                android:id="@+id/lobsterpicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:foregroundGravity="center_horizontal" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundGravity="center|center_horizontal">
+
+            <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
+                android:id="@+id/shadeslider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundGravity="center|center_horizontal">
+
+            <com.larswerkman.lobsterpicker.sliders.LobsterOpacitySlider
+                android:id="@+id/opacityslider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </TableRow>
     </TableLayout>
 </FrameLayout>
