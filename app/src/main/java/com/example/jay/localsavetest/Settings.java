@@ -1,6 +1,7 @@
 package com.example.jay.localsavetest;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.ActionBar;
@@ -35,6 +36,7 @@ public class Settings extends BaseActivity {
     ImageButton colorButton;
     TextView colorText;
     Button doneButton;
+    ImageButton backButton;
 
 
     private String preferencesFileName = "com.example.jay.localsavetest.preferences";
@@ -131,8 +133,16 @@ public class Settings extends BaseActivity {
         opacityFrame = (FrameLayout) findViewById(R.id.colorFrame3);
         colorText = (TextView) findViewById(R.id.textView8);
         doneButton = (Button) findViewById(R.id.button7);
+        backButton = (ImageButton) findViewById(R.id.imageButton3);
         shadeFrame.getLayoutParams().width=lobsterPicker.getLayoutParams().width;
         opacityFrame.getLayoutParams().width=lobsterPicker.getLayoutParams().width;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),StartingScreen.class);
+                startActivity(i);
+            }});
 
 
         colorButton= (ImageButton)this.findViewById(R.id.imageButton);
@@ -150,6 +160,7 @@ public class Settings extends BaseActivity {
                 opacityFrame.invalidate();
                 colorButton.setVisibility(View.GONE);
                 colorText.setVisibility(View.GONE);
+                backButton.setVisibility(View.GONE);
                 doneButton.setVisibility(View.VISIBLE);
 
 
@@ -163,6 +174,7 @@ public class Settings extends BaseActivity {
                 colorButton.setVisibility(View.VISIBLE);
                 colorText.setVisibility(View.VISIBLE);
                 doneButton.setVisibility(View.GONE);
+                backButton.setVisibility(View.VISIBLE);
             }});
 //To connect them
         lobsterPicker.addDecorator(shadeSlider);
