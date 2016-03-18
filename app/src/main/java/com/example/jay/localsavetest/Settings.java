@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.larswerkman.lobsterpicker.LobsterPicker;
@@ -22,7 +25,17 @@ import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class Settings extends AppCompatActivity {
+public class Settings extends BaseActivity {
+    LobsterPicker lobsterPicker;
+    LobsterShadeSlider shadeSlider;
+    LobsterOpacitySlider opacitySlider;
+    FrameLayout pickerFrame;
+    FrameLayout shadeFrame;
+    FrameLayout opacityFrame;
+    ImageButton colorButton;
+    TextView colorText;
+    Button doneButton;
+
 
     private String preferencesFileName = "com.example.jay.localsavetest.preferences";
     /**
@@ -81,7 +94,8 @@ public class Settings extends AppCompatActivity {
         }
     };
 
-    }
+
+
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
@@ -105,19 +119,51 @@ public class Settings extends AppCompatActivity {
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
-        final LobsterPicker lobsterPicker = (LobsterPicker) findViewById(R.id.lobsterpicker);
-        LobsterShadeSlider shadeSlider = (LobsterShadeSlider) findViewById(R.id.shadeslider);
-        LobsterOpacitySlider opacitySlider = (LobsterOpacitySlider) findViewById(R.id.opacityslider);
 
 
 
-        ImageButton colorButton = (ImageButton)this.findViewById(R.id.imageButton);
-        colorButton.setOnClickListener(new View.onClickListener() {
+        lobsterPicker = (LobsterPicker) findViewById(R.id.lobsterpicker);
+        shadeSlider = (LobsterShadeSlider) findViewById(R.id.shadeslider);
+        opacitySlider = (LobsterOpacitySlider) findViewById(R.id.opacityslider);
+        lobsterPicker.getLayoutParams();
+        pickerFrame = (FrameLayout) findViewById(R.id.colorFrame1);
+        shadeFrame = (FrameLayout) findViewById(R.id.colorFrame2);
+        opacityFrame = (FrameLayout) findViewById(R.id.colorFrame3);
+        colorText = (TextView) findViewById(R.id.textView8);
+        doneButton = (Button) findViewById(R.id.button7);
+        shadeFrame.getLayoutParams().width=lobsterPicker.getLayoutParams().width;
+        opacityFrame.getLayoutParams().width=lobsterPicker.getLayoutParams().width;
+
+
+        colorButton= (ImageButton)this.findViewById(R.id.imageButton);
+        colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                opacitySlider.setVisibility(View.VISIBLE);
+                lobsterPicker.setVisibility(View.VISIBLE);
+                shadeSlider.setVisibility(View.VISIBLE);
+                pickerFrame.setBackgroundColor(Integer.decode("0x64FFFFFF").intValue());
+                pickerFrame.invalidate();
+                shadeFrame.setBackgroundColor(Integer.decode("0x64FFFFFF").intValue());
+                shadeFrame.invalidate();
+                opacityFrame.setBackgroundColor(Integer.decode("0x64FFFFFF").intValue());
+                opacityFrame.invalidate();
+                colorButton.setVisibility(View.GONE);
+                colorText.setVisibility(View.GONE);
+                doneButton.setVisibility(View.VISIBLE);
 
 
-            };});
+            }});
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                opacitySlider.setVisibility(View.GONE);
+                lobsterPicker.setVisibility(View.GONE);
+                shadeSlider.setVisibility(View.GONE);
+                colorButton.setVisibility(View.VISIBLE);
+                colorText.setVisibility(View.VISIBLE);
+                doneButton.setVisibility(View.GONE);
+            }});
 //To connect them
         lobsterPicker.addDecorator(shadeSlider);
         lobsterPicker.addDecorator(opacitySlider);
@@ -141,6 +187,8 @@ public class Settings extends AppCompatActivity {
                 SharedPreferences.Editor edit=backgroundColor.edit();
                 edit.putString("backgroundColor", Integer.toHexString(color));
                 edit.commit();
+                getWindow().getDecorView().setBackgroundColor(Long.decode("0x" + backgroundColor.getString("backgroundColor", "0x00000000")).intValue());
+
 
 
 
@@ -161,8 +209,14 @@ public class Settings extends AppCompatActivity {
 
     }
 @Override
-protected void onCreateView(){
+protected void onStart(){
+    super.onStart();
 
+
+    opacitySlider.setVisibility(View.GONE);
+    lobsterPicker.setVisibility(View.GONE);
+    shadeSlider.setVisibility(View.GONE);
+    doneButton.setVisibility(View.GONE);
 }
 
     @Override

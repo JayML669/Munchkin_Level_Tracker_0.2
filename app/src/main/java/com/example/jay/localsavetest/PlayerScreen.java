@@ -17,7 +17,7 @@ import com.example.jay.localsavetest.R;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class PlayerScreen extends FragmentActivity {
+public class PlayerScreen extends BaseActivity {
     StatsAppState appState=new StatsAppState();
     /**
      * Whether or not the system UI should be auto-hidden after

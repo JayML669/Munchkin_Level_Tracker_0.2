@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
     tools:context="com.example.jay.localsavetest.Settings">
 
 
@@ -46,12 +45,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:foregroundGravity="center|center_horizontal">
-            <com.larswerkman.lobsterpicker.LobsterPicker
-                android:id="@+id/lobsterpicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:foregroundGravity="center_horizontal" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/colorFrame1">
+
+                <com.larswerkman.lobsterpicker.LobsterPicker
+                    android:id="@+id/lobsterpicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center_horizontal" />
+            </FrameLayout>
 
 
         </TableRow>
@@ -61,24 +67,49 @@
             android:layout_height="match_parent"
             android:foregroundGravity="center|center_horizontal">
 
-            <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
-                android:id="@+id/shadeslider"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/colorFrame2">
+
+                <com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
+                    android:id="@+id/shadeslider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </FrameLayout>
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foregroundGravity="center|center_horizontal">
+            android:layout_height="match_parent">
 
-            <com.larswerkman.lobsterpicker.sliders.LobsterOpacitySlider
-                android:id="@+id/opacityslider"
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/colorFrame3">
+
+                <com.larswerkman.lobsterpicker.sliders.LobsterOpacitySlider
+                    android:id="@+id/opacityslider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fadeScrollbars="false"
+                    android:layout_column="0" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:text="DONE"
+                android:id="@+id/button7"
+                android:textSize="30dp" />
         </TableRow>
     </TableLayout>
 </FrameLayout>

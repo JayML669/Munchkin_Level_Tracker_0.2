@@ -1,5 +1,6 @@
 package com.example.jay.localsavetest;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 public class BaseActivity extends AppCompatActivity {
     public boolean showToast = true;
+    private String preferencesFileName = "com.example.jay.localsavetest.preferences";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,8 +19,12 @@ public class BaseActivity extends AppCompatActivity {
 
 }
     @Override
-    protected void onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        super.onCreateView();
+    protected void onStart(){
+        super.onStart();
+        SharedPreferences backgroundColor=getApplicationContext().getSharedPreferences(preferencesFileName, Settings.MODE_PRIVATE);
+        backgroundColor.getString("backgroundColor", "");
+        toast(backgroundColor.getString("backgroundColor", "0x00000000"));
+        getWindow().getDecorView().setBackgroundColor(Long.decode("0x"+backgroundColor.getString("backgroundColor", "0x00000000")).intValue());
     }
     public void toast(String message){
         if (showToast) Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
