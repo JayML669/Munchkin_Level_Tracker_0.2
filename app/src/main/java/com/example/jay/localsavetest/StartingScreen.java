@@ -108,14 +108,33 @@ public class StartingScreen extends BaseActivity {
                 Intent i = new Intent(getApplicationContext(), Settings.class);
                 startActivity(i);
 
-                // Set up the user interaction to manually show or hide the system UI.
-
 
                 // Upon interacting with UI controls, delay any scheduled hide()
                 // operations to prevent the jarring behavior of controls going away
                 // while interacting with the UI.
 
             }
+
+
+
+        });
+
+
+        ImageButton newGame = (ImageButton) this.findViewById(R.id.imageButton1);
+        newGame.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+        public void onClick(View view){
+                Intent i = new Intent(getApplicationContext(), NewGameScreen.class);
+                startActivity(i);
+
+            }
+        });
+
+
+
+    }
 
    /* @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -169,4 +188,4 @@ public class StartingScreen extends BaseActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);*/
 
-        });};}
+        }

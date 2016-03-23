@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -41,12 +43,12 @@ public class NewGameScreen extends BaseActivity {
             // Note that some of these constants are new as of API 16 (Jelly Bean)
             // and API 19 (KitKat). It is safe to use them, as they are inlined
             // at compile-time and do nothing on earlier devices.
-            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+/*            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);*/
         }
     };
     private View mControlsView;
@@ -92,15 +94,23 @@ public class NewGameScreen extends BaseActivity {
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
 
+        Spinner playerCountSpinner =(Spinner) this.findViewById(R.id.spinner);
+        String[] myOptions=new String[7];
+        myOptions[0]="2 Player Game";
+        myOptions[1]="3 Player Game";
+        myOptions[2]="4 Player Game";
+        myOptions[3]="5 Player Game";
+        myOptions[4]="6 Player Game";
+        myOptions[5]="7 Player Game";
+        myOptions[6]="8 Player Game";
+        playerCountSpinner.setAdapter(new ArrayAdapter<String>(this.getApplicationContext(),R.layout.jays_list_item, myOptions));
+
+
+
 
 
         // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
@@ -132,7 +142,7 @@ public class NewGameScreen extends BaseActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        mControlsView.setVisibility(View.GONE);
+    //    mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
