@@ -5,17 +5,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Toast;
 
 public class BaseActivity extends AppCompatActivity {
     public boolean showToast = true;
+    boolean hideActionBar = true;
     private String preferencesFileName = "com.example.jay.localsavetest.preferences";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(hideActionBar)hideActionBar();
         setContentView(R.layout.activity_base);
 
 
+
+}
+    public void hideActionBar(){
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getSupportActionBar().hide();
+
+    }
+
+public void onResume(){
+    super.onResume();
 
 }
     @Override
