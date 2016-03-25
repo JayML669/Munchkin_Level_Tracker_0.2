@@ -14,7 +14,7 @@ import java.util.List;
 public class PlayerPagerAdapter extends FragmentPagerAdapter {
     private Context context;
     private int gameNumber;
-    private int numberOfTabs = 0;
+    private int numberOfTabs;
     boolean showToast = false;
     private StatsAppState statsAppState;
 

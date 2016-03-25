@@ -1,6 +1,7 @@
 package com.statsapp.stats;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  */
 public class Game {
 
-    public List<Player> player=new ArrayList<Player>();
+    public HashMap<String,Player> player=new HashMap<String,Player>();
     int id;
 public String toString(){
 
@@ -17,6 +18,7 @@ public String toString(){
     public void addPlayer(){
         Player newPlayer = new Player();
         newPlayer.pid=this.player.size() + 1;
+        player.put(newPlayer.toString(),newPlayer);
 
     }
 }

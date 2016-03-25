@@ -1,6 +1,7 @@
 package com.example.jay.localsavetest;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 /**
@@ -15,6 +17,10 @@ import android.widget.Spinner;
  * status bar and navigation/system bar) with user interaction.
  */
 public class NewGameScreen extends BaseActivity {
+    Spinner players;
+
+
+
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -90,9 +96,19 @@ public class NewGameScreen extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_new_game_screen);
+        players = (Spinner) this.findViewById(R.id.spinner);
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
+        Button createGameButton = (Button) this.findViewById(R.id.button5);
+        createGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(getApplicationContext(), PlayerScreen.class);
+                i.putExtra("numberOfPlayers", (players.getSelectedItemPosition()+2));
+                startActivity(i);
+            }
+        });
 
         Spinner playerCountSpinner =(Spinner) this.findViewById(R.id.spinner);
         String[] myOptions=new String[7];

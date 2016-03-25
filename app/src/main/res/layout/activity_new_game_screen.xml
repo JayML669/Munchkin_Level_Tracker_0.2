@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="com.example.jay.localsavetest.NewGameScreen">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
@@ -10,8 +10,8 @@
 
 
     <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -29,8 +29,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,8 +41,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -53,8 +53,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <Button
                 android:layout_width="wrap_content"

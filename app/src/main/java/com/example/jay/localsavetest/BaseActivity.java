@@ -12,17 +12,20 @@ public class BaseActivity extends AppCompatActivity {
     public boolean showToast = true;
     boolean hideActionBar = true;
     private String preferencesFileName = "com.example.jay.localsavetest.preferences";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if(hideActionBar)hideActionBar();
-        setContentView(R.layout.activity_base);
-
-
-
-}
-    public void hideActionBar(){
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        super.onCreate(savedInstanceState);
+        if (hideActionBar) hideActionBar();
+        setContentView(R.layout.activity_base);
+    }
+
+
+    public void hideActionBar(){
+
         getSupportActionBar().hide();
 
     }
