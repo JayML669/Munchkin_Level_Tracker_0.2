@@ -6,12 +6,12 @@ import android.support.v4.app.FragmentActivity;
 import android.app.ActionBar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TableLayout;
+import android.support.design.widget.TabLayout;
 
 import com.statsapp.stats.*;
 
@@ -67,7 +67,39 @@ public class PlayerScreen extends BaseActivity{
         appState.games.games.add(g);
         final ViewPager playerPagerAdapter = (ViewPager) findViewById(R.id.pager);
         playerPagerAdapter.setAdapter(new PlayerPagerAdapter(getSupportFragmentManager(),this,this.appState,(appState.games.games.size()-1)));
+        final ViewPager viewPager = (ViewPager)  findViewById(R.id.pager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setupWithViewPager(viewPager);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout) {
+
+        }
+        );
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab){
+
+                toast("New Tab Selected!");
+                viewPager.setCurrentItem(tab.getPosition());
+
+            };
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab){
+
+
+
+            };
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab){
+
+
+
+            };
+        });
 
         // Set up the user interaction to manually show or hide the system UI.
 
