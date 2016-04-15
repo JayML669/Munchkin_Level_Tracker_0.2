@@ -81,7 +81,7 @@ public class PlayerScreen extends BaseActivity{
             @Override
             public void onTabSelected(TabLayout.Tab tab){
 
-                toast("New Tab Selected!");
+                toast("New Tab Selected, Yay!");
                 viewPager.setCurrentItem(tab.getPosition());
 
             };
